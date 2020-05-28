@@ -1,0 +1,33 @@
+name: CI
+
+on:
+- push
+- pull_request
+
+jobs:
+  build:
+
+    strategy:
+      matrix:
+        python-version: [3.6, 3.7, 3.8]
+
+    runs-on: ubuntu-18.04
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Add PPA
+      run: |
+        sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
+    - name: Get dependencies
+      run: |
+        sudo apt-get update -y
+        sudo apt-get install -y gawk findutils
+        xargs -a <(awk '! /^ *(#|$)/' ".github/workflows/apt.txt") -r -- \
+            sudo apt-get install -y --no-install-recommends --no-install-suggests
+    - name: Process data
+      run: |
+        ./process.sh
