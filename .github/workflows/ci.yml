@@ -31,3 +31,6 @@ jobs:
     - name: Process data
       run: |
         ./process.sh
+    - name: Test results
+      run: |
+        test -f buildings.geojson
