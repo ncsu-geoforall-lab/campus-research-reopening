@@ -16,7 +16,7 @@ xlsx2csv "$TABULAR_INPUT" > "raw_building_counts.csv"
 ./fix_building_number.py "raw_building_counts.csv" "building_counts_corrected.csv"
 
 grass --tmp-location "EPSG:3358" --exec \
-    ./grass_process.sh
+    ./grass_process.sh \
         $SPATIAL_INPUT "building_counts_corrected.csv" \
         $CLIP_REGION $GRASS_OUTPUT
 
