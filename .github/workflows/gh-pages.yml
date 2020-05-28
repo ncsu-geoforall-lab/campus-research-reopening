@@ -18,7 +18,7 @@ jobs:
     - name: Install GRASS GIS and other dependencies
       run: |
         sudo apt-get update -qq
-        sudo apt-get install -y -qq grass grass-dev grass-doc
+        sudo apt-get install -y -qq grass grass-dev grass-doc xlsx2csv
     - name: Process data
       run: |
         ./process.sh
