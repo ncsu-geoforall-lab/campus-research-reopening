@@ -1,4 +1,4 @@
-name: Code quality check
+name: Python code quality check
 
 on:
 - push

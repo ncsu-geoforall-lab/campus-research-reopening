@@ -1,4 +1,4 @@
-name: Deploy online documentation
+name: Deploy content
 
 on:
   push:
