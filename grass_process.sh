@@ -29,6 +29,9 @@ v.db.update buildings col=Count qcol="CAST(count_text AS integer)"
 # Replace zeros with NULLs
 v.db.update buildings column=Count query_column="NULL" where="Count = 0"
 
+# Drop unnecessary columns
+v.db.dropcolumn map=buildings columns=BLDGNUM,Shape_STAr,Shape_STLe,Precinct,City,count_text
+
 # Export data
 # Using overwrite to behave like other tools in case of re-running this.
 # (Consistent behavior if we are in a temporary location.)
