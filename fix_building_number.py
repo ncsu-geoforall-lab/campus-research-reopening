@@ -3,6 +3,7 @@
 import csv
 import sys
 
+
 def correct_number(value1):
     if len(value1) == 1:
         return f"00{value1}"
@@ -12,10 +13,12 @@ def correct_number(value1):
 
 
 def filter_file(input_file, output_file):
-    with open(input_file, newline='') as infile:
+    with open(input_file, newline="") as infile:
         reader = csv.reader(infile)
         fieldnames = next(reader)
-    with open(input_file, newline='') as infile, open(output_file, 'w', newline='') as outfile:
+    with open(input_file, newline="") as infile, open(
+        output_file, "w", newline=""
+    ) as outfile:
         reader = csv.DictReader(infile)
         writer = csv.DictWriter(outfile, fieldnames=fieldnames)
         writer.writeheader()
@@ -24,10 +27,12 @@ def filter_file(input_file, output_file):
             row["Number"] = correct_number(value)
             writer.writerow(row)
 
+
 def main():
     input_file = sys.argv[1]
     output_file = sys.argv[2]
     filter_file(input_file, output_file)
+
 
 if __name__ == "__main__":
     main()
