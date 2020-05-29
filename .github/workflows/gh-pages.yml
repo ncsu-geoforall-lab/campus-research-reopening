@@ -30,7 +30,7 @@ jobs:
         ./process.sh
     - name: Generate web map
       run: |
-        ./create_keplergl.sh
+        ./create_keplergl.py
     - name: Prepare artifacts to be published
       run: |
         mkdir artifacts

@@ -37,7 +37,7 @@ jobs:
         ./process.sh
     - name: Generate web map
       run: |
-        ./create_keplergl.sh
+        ./create_keplergl.py
     - name: Test results
       run: |
         test -f buildings.geojson
