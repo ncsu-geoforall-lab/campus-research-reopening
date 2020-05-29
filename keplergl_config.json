@@ -115,9 +115,9 @@
           "fieldsToShow": {
             "{{ data_id }}": [
               "Name",
+              "Address",
               "Number",
-              "Count",
-              "Address"
+              "Count"
             ]
           },
           "enabled": true
