@@ -24,22 +24,23 @@
               "strokeOpacity": 0.8,
               "thickness": 0.2,
               "strokeColor": [
-                140,
-                51,
-                10
+                210,
+                128,
+                154
               ],
               "colorRange": {
-                "name": "Global Warming",
+                "name": "Sunrise 6",
                 "type": "sequential",
                 "category": "Uber",
                 "colors": [
-                  "#5A1846",
-                  "#900C3F",
-                  "#C70039",
-                  "#E3611C",
-                  "#F1920E",
-                  "#FFC300"
-                ]
+                  "#355C7D",
+                  "#63617F",
+                  "#916681",
+                  "#D88185",
+                  "#E8998D",
+                  "#F8B195"
+                ],
+                "reversed": false
               },
               "strokeColorRange": {
                 "name": "Global Warming",
@@ -152,7 +153,7 @@
       "styleType": "dark",
       "topLayerGroups": {},
       "visibleLayerGroups": {
-        "label": true,
+        "label": false,
         "road": true,
         "border": false,
         "building": true,
@@ -167,5 +168,5 @@
       ],
       "mapStyles": {}
     }
- }
+  }
 }
