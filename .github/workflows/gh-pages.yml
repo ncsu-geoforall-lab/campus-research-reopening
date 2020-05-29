@@ -21,14 +21,22 @@ jobs:
         sudo apt-get install -y gawk findutils
         xargs -a <(awk '! /^ *(#|$)/' ".github/workflows/apt.txt") -r -- \
             sudo apt-get install -y --no-install-recommends --no-install-suggests
+    - name: Install pip dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install keplergl
     - name: Process data
       run: |
         ./process.sh
+    - name: Generate web map
+      run: |
+        ./create_keplergl.sh
     - name: Prepare artifacts to be published
       run: |
         mkdir artifacts
         mkdir artifacts/data
         cp buildings.geojson artifacts/data/
+        cp keplergl.html artifacts/
         cp index.html artifacts/
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
