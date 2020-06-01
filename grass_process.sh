@@ -31,16 +31,19 @@ do
 done
 
 # Replace zeros with NULLs
+# Results in polygons without fill and thus makes clear distinction
+# between 0 and 1 in the automatic color table.
 v.db.update buildings column=Daily_Total query_column="NULL" where="Daily_Total = 0"
 v.db.update buildings column=Shift_Total query_column="NULL" where="Shift_Total = 0"
 
+# Add more readable column
+# It is easier to color and creates more readable legend.
+v.db.addcolumn buildings columns="Building_Type text"
+v.db.update buildings column=Building_Type query_column="case when Research_Building = 1 then 'Research' else 'Other' end"
+v.db.dropcolumn map=buildings columns=tmp_column
+
 # Drop unnecessary columns
 v.db.dropcolumn map=buildings columns=BLDGNUM,Shape_STAr,Shape_STLe,Precinct,City
-
-# Pick only research buildings
-# Doing swap to preserve the name in the output JSON file.
-g.rename vector=buildings,buildings_full
-v.extract input=buildings_full where="Research_Building = 1" output=buildings
 
 # Export data
 # Using overwrite to behave like other tools in case of re-running this.

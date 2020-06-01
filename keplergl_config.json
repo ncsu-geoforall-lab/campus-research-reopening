@@ -43,16 +43,12 @@
                 "reversed": false
               },
               "strokeColorRange": {
-                "name": "Global Warming",
-                "type": "sequential",
-                "category": "Uber",
+                "name": "Custom Palette",
+                "type": "custom",
+                "category": "Custom",
                 "colors": [
-                  "#5A1846",
-                  "#900C3F",
-                  "#C70039",
-                  "#E3611C",
-                  "#F1920E",
-                  "#FFC300"
+                  "#4a2e37",
+                  "#d2809a"
                 ]
               },
               "radius": 10,
@@ -101,8 +97,11 @@
             "colorScale": "quantize",
             "sizeField": null,
             "sizeScale": "linear",
-            "strokeColorField": null,
-            "strokeColorScale": "quantile",
+            "strokeColorField": {
+              "name": "Building_Type",
+              "type": "string"
+            },
+            "strokeColorScale": "ordinal",
             "heightField": null,
             "heightScale": "linear",
             "radiusField": null,
