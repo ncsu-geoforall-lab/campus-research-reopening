@@ -26,12 +26,6 @@ def filter_file(input_file, output_file):
         for row in reader:
             value = row["Number"]
             new_row["Number"] = correct_number(value)
-
-            # Aapparently, this is done automatically on import to GRASS GIS,
-            # but we will do it manually to be in control.
-            for key, value in row.items():
-                new_row[key.replace(" ", "_")] = value
-
             writer.writerow(new_row)
 
 
