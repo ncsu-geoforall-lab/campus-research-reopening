@@ -22,11 +22,10 @@ def filter_file(input_file, output_file):
         reader = csv.DictReader(infile)
         writer = csv.DictWriter(outfile, fieldnames=fieldnames)
         writer.writeheader()
-        new_row = {}
         for row in reader:
             value = row["Number"]
-            new_row["Number"] = correct_number(value)
-            writer.writerow(new_row)
+            row["Number"] = correct_number(value)
+            writer.writerow(row)
 
 
 def main():
