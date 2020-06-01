@@ -29,12 +29,15 @@ def main():
     output = f"keplergl_{column}.html"
     kepler.save_to_html(file_name=output)
 
-    # Add map creator
+    name = column.replace("_", " ")
+
+    # Add map title and creator
     with InPlace(output) as file:
         for line in file:
             line = line.replace(
                 "<title>Kepler.gl</title>",
-                "<title>Campus Research Reopening Map by NCSU CGA</title>",
+                f"<title>{name} &ndash; Campus Research Reopening Map"
+                " by NCSU CGA</title>",
             )
             line = line.replace("Kepler.gl Jupyter", "Kepler.gl Map by NCSU CGA")
             file.write(line)
