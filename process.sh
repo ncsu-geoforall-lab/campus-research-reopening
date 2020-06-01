@@ -5,7 +5,7 @@ set -x
 
 # OGR datasource
 SPATIAL_INPUT="/vsizip/./data/BLDGSCAMPUS.zip/BLDGSCAMPUS.shp"
-TABULAR_INPUT="data/CGA_052620.xlsx"
+TABULAR_INPUT="data/CGA.xlsx"
 
 CLIP_REGION="data/main_region.gpkg"
 

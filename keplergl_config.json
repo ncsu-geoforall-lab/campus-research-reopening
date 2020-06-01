@@ -95,10 +95,10 @@
           },
           "visualChannels": {
             "colorField": {
-              "name": "Count",
+              "name": "{{ color_column }}",
               "type": "integer"
             },
-            "colorScale": "quantile",
+            "colorScale": "quantize",
             "sizeField": null,
             "sizeScale": "linear",
             "strokeColorField": null,
@@ -115,9 +115,8 @@
           "fieldsToShow": {
             "{{ data_id }}": [
               "Name",
-              "Address",
-              "Number",
-              "Count"
+              "Daily_Total",
+              "Shift_Total"
             ]
           },
           "enabled": true

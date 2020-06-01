@@ -34,13 +34,14 @@ jobs:
         ./process.sh
     - name: Generate web map
       run: |
-        ./create_keplergl.py
+        ./generate.sh
     - name: Prepare artifacts to be published
       run: |
         mkdir artifacts
         mkdir artifacts/data
         cp buildings.geojson artifacts/data/
-        cp keplergl.html artifacts/
+        cp keplergl_Daily_Total.html artifacts/
+        cp keplergl_Shift_Total.html artifacts/
         cp index.html artifacts/
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3

@@ -21,16 +21,26 @@ v.clip input=raw_buildings clip=region output=buildings
 # Join the tables
 v.db.join buildings column=BLDGNUM other_table=building_counts_table other_column=Number
 
-# Make Count an integer
-v.db.renamecolumn buildings column=Count,count_text
-v.db.addcolumn buildings columns="Count integer"
-v.db.update buildings col=Count qcol="CAST(count_text AS integer)"
+# Make integer columns integers
+for COLUMN in Research_Building Daily_Total Shift_Total
+do
+    v.db.renamecolumn buildings column=$COLUMN,tmp_column
+    v.db.addcolumn buildings columns="$COLUMN integer"
+    v.db.update buildings col=$COLUMN qcol="CAST(tmp_column AS integer)"
+    v.db.dropcolumn map=buildings columns=tmp_column
+done
 
 # Replace zeros with NULLs
-v.db.update buildings column=Count query_column="NULL" where="Count = 0"
+v.db.update buildings column=Daily_Total query_column="NULL" where="Daily_Total = 0"
+v.db.update buildings column=Shift_Total query_column="NULL" where="Shift_Total = 0"
 
 # Drop unnecessary columns
-v.db.dropcolumn map=buildings columns=BLDGNUM,Shape_STAr,Shape_STLe,Precinct,City,count_text
+v.db.dropcolumn map=buildings columns=BLDGNUM,Shape_STAr,Shape_STLe,Precinct,City
+
+# Pick only research buildings
+# Doing swap to preserve the name in the output JSON file.
+g.rename vector=buildings,buildings_full
+v.extract input=buildings_full where="Research_Building = 1" output=buildings
 
 # Export data
 # Using overwrite to behave like other tools in case of re-running this.

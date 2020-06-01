@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import sys
 import json
 from keplergl import KeplerGl
 from in_place import InPlace
@@ -15,14 +16,17 @@ def read_configuration(file_name, **kwargs):
 
 
 def main():
+    column = sys.argv[1]
     config_file = "keplergl_config.json"
     data_id = "buildings"
-    config = read_configuration(config_file, label="Buildings", data_id=data_id)
+    config = read_configuration(
+        config_file, label="Buildings", data_id=data_id, color_column=column
+    )
     print("Using configuration (JSON syntax):")
     print(json.dumps(config, indent=2))
     kepler = KeplerGl(config=config)
     kepler.add_data(data=open("buildings.geojson").read(), name=data_id)
-    output = "keplergl.html"
+    output = f"keplergl_{column}.html"
     kepler.save_to_html(file_name=output)
 
     # Add map creator

@@ -22,10 +22,17 @@ def filter_file(input_file, output_file):
         reader = csv.DictReader(infile)
         writer = csv.DictWriter(outfile, fieldnames=fieldnames)
         writer.writeheader()
+        new_row = {}
         for row in reader:
             value = row["Number"]
-            row["Number"] = correct_number(value)
-            writer.writerow(row)
+            new_row["Number"] = correct_number(value)
+
+            # Aapparently, this is done automatically on import to GRASS GIS,
+            # but we will do it manually to be in control.
+            for key, value in row.items():
+                new_row[key.replace(" ", "_")] = value
+
+            writer.writerow(new_row)
 
 
 def main():
