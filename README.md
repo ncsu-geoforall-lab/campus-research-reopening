@@ -1,5 +1,8 @@
 # NC State Campus Research Reopening
 
+![CI](https://github.com/ncsu-geoforall-lab/campus-research-reopening/workflows/CI/badge.svg?branch=master)
+![Deploy content](https://github.com/ncsu-geoforall-lab/campus-research-reopening/workflows/Deploy%20content/badge.svg?branch=master)
+
 ## Disclaimer
 
 This is not official policy information, but a scenario evaluation tool.
