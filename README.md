@@ -23,5 +23,9 @@ This is not official policy information, but a scenario evaluation tool.
 5. Make sure, *Create a new branch for this commit and start a pull request* is selected.
 6. Click *Commit changes*.
 7. Click *Create pull request*.
-7. In the pull request, see if the change (pull request) passes the checks.
-8. *Squash and merge* the pull request.
+8. In the pull request, see if the change (pull request) passes the checks.
+9. Click *Squash and merge* in the pull request.
+10. Optionally, modify the commit message.
+11. Click *Confirm squash and merge*.
+
+Note that the *Squash and merge* will be enabled only if the required checks pass.
