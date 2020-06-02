@@ -42,6 +42,11 @@ v.db.addcolumn buildings columns="Building_Type text"
 v.db.update buildings column=Building_Type query_column="case when Research_Building = 1 then 'Research' else 'Other' end"
 v.db.dropcolumn map=buildings columns=tmp_column
 
+# Remove buildings which are not part of the university
+# Preserving the simple name, so using a a rename/swap.
+g.rename vector=buildings,all_buildings
+v.extract input=all_buildings where="Number is not NULL" output=buildings
+
 # Drop unnecessary columns
 v.db.dropcolumn map=buildings columns=BLDGNUM,Shape_STAr,Shape_STLe,Precinct,City
 
