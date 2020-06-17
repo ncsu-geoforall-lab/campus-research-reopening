@@ -16,20 +16,21 @@ def read_configuration(file_name, **kwargs):
 
 
 def main():
-    column = sys.argv[1]
+    column_short = sys.argv[1]
+    column_long = sys.argv[2]
     config_file = "keplergl_config.json"
     data_id = "buildings"
     config = read_configuration(
-        config_file, label="Buildings", data_id=data_id, color_column=column
+        config_file, label="Buildings", data_id=data_id, color_column=column_long
     )
     print("Using configuration (JSON syntax):")
     print(json.dumps(config, indent=2))
     kepler = KeplerGl(config=config)
     kepler.add_data(data=open("buildings.geojson").read(), name=data_id)
-    output = f"keplergl_{column}.html"
+    output = f"keplergl_{column_short}.html"
     kepler.save_to_html(file_name=output)
 
-    name = column.replace("_", " ")
+    name = column_long.replace("_", " ")
 
     # Add map title and creator
     with InPlace(output) as file:

@@ -40,8 +40,8 @@ jobs:
         mkdir artifacts
         mkdir artifacts/data
         cp buildings.geojson artifacts/data/
-        cp keplergl_Daily_Total.html artifacts/
-        cp keplergl_Shift_Total.html artifacts/
+        cp keplergl_AMO.html artifacts/
+        cp keplergl_UPI.html artifacts/
         cp index.html artifacts/
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
