@@ -41,5 +41,5 @@ jobs:
     - name: Test results
       run: |
         test -f buildings.geojson
-        test -f keplergl_Daily_Total.html
-        test -f keplergl_Shift_Total.html
+        test -f keplergl_AMO.html
+        test -f keplergl_UPI.html

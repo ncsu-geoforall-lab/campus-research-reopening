@@ -114,8 +114,8 @@
           "fieldsToShow": {
             "{{ data_id }}": [
               "Name",
-              "Daily_Total",
-              "Shift_Total"
+              "Approved_Max_Occupancy",
+              "Unique_PIs"
             ]
           },
           "enabled": true

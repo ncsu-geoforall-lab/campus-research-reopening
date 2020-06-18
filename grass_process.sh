@@ -22,7 +22,7 @@ v.clip input=raw_buildings clip=region output=buildings
 v.db.join buildings column=BLDGNUM other_table=building_counts_table other_column=Number
 
 # Make integer columns integers
-for COLUMN in Research_Building Daily_Total Shift_Total
+for COLUMN in Research_Building AMO UPI
 do
     v.db.renamecolumn buildings column=$COLUMN,tmp_column
     v.db.addcolumn buildings columns="$COLUMN integer"
@@ -33,8 +33,8 @@ done
 # Replace zeros with NULLs
 # Results in polygons without fill and thus makes clear distinction
 # between 0 and 1 in the automatic color table.
-v.db.update buildings column=Daily_Total query_column="NULL" where="Daily_Total = 0"
-v.db.update buildings column=Shift_Total query_column="NULL" where="Shift_Total = 0"
+v.db.update buildings column=AMO query_column="NULL" where="AMO = 0"
+v.db.update buildings column=UPI query_column="NULL" where="UPI = 0"
 
 # Add more readable column
 # It is easier to color and creates more readable legend.
@@ -46,6 +46,10 @@ v.db.dropcolumn map=buildings columns=tmp_column
 # Preserving the simple name, so using a a rename/swap.
 g.rename vector=buildings,all_buildings
 v.extract input=all_buildings where="Number is not NULL" output=buildings
+
+# Rename columns for output
+v.db.renamecolumn map=buildings column=AMO,Approved_Max_Occupancy
+v.db.renamecolumn map=buildings column=UPI,Unique_PIs
 
 # Drop unnecessary columns
 v.db.dropcolumn map=buildings columns=BLDGNUM,Shape_STAr,Shape_STLe,Precinct,City
