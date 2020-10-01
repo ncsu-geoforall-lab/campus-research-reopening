@@ -49,7 +49,7 @@ g.rename vector=buildings,all_buildings
 v.extract input=all_buildings where="Number is not NULL" output=buildings
 
 # Rename columns for output
-v.db.renamecolumn map=buildings column=AMO,Approved_Max_Occupancy
+v.db.renamecolumn map=buildings column=AMO,Approved_Capacity
 v.db.renamecolumn map=buildings column=UPI,Unique_PIs
 v.db.renamecolumn map=buildings column=TS,Max_Per_Shift
 
