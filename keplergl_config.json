@@ -114,8 +114,9 @@
           "fieldsToShow": {
             "{{ data_id }}": [
               "Name",
-              "Approved_Max_Occupancy",
-              "Unique_PIs"
+              "Approved_Capacity",
+              "Unique_PIs",
+              "Max_Per_Shift"
             ]
           },
           "enabled": true

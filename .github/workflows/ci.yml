@@ -43,3 +43,4 @@ jobs:
         test -f buildings.geojson
         test -f keplergl_AMO.html
         test -f keplergl_UPI.html
+        test -f keplergl_TS.html
