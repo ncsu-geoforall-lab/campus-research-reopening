@@ -22,7 +22,7 @@ v.clip input=raw_buildings clip=region output=buildings
 v.db.join buildings column=BLDGNUM other_table=building_counts_table other_column=Number
 
 # Make integer columns integers
-for COLUMN in Research_Building AMO UPI
+for COLUMN in Research_Building AMO UPI TS
 do
     v.db.renamecolumn buildings column=$COLUMN,tmp_column
     v.db.addcolumn buildings columns="$COLUMN integer"
@@ -35,6 +35,7 @@ done
 # between 0 and 1 in the automatic color table.
 v.db.update buildings column=AMO query_column="NULL" where="AMO = 0"
 v.db.update buildings column=UPI query_column="NULL" where="UPI = 0"
+v.db.update buildings column=TS query_column="NULL" where="TS = 0"
 
 # Add more readable column
 # It is easier to color and creates more readable legend.
@@ -50,6 +51,7 @@ v.extract input=all_buildings where="Number is not NULL" output=buildings
 # Rename columns for output
 v.db.renamecolumn map=buildings column=AMO,Approved_Max_Occupancy
 v.db.renamecolumn map=buildings column=UPI,Unique_PIs
+v.db.renamecolumn map=buildings column=TS,Max_Per_Shift
 
 # Drop unnecessary columns
 v.db.dropcolumn map=buildings columns=BLDGNUM,Shape_STAr,Shape_STLe,Precinct,City

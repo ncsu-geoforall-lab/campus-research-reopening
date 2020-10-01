@@ -115,7 +115,8 @@
             "{{ data_id }}": [
               "Name",
               "Approved_Max_Occupancy",
-              "Unique_PIs"
+              "Unique_PIs",
+              "Max_Per_Shift"
             ]
           },
           "enabled": true

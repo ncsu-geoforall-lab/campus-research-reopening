@@ -42,6 +42,7 @@ jobs:
         cp buildings.geojson artifacts/data/
         cp keplergl_AMO.html artifacts/
         cp keplergl_UPI.html artifacts/
+        cp keplergl_TS.html artifacts/
         cp index.html artifacts/
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
