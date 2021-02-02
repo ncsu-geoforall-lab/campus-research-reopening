@@ -44,3 +44,11 @@ jobs:
         test -f keplergl_AMO.html
         test -f keplergl_UPI.html
         test -f keplergl_TS.html
+    - name: Make the generated files available
+      uses: actions/upload-artifact@v2
+      with:
+        name: artifacts
+        path: |
+          *.html
+          *.geojson
+        retention-days: 5
